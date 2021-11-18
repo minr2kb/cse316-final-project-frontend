@@ -1,0 +1,31 @@
+.navbar{
+    width: 100%;
+    background-color:white;
+    height: fit-content;
+    padding-bottom: 1%;
+}
+.title{
+    float: left;
+    margin-left: 4px;
+    margin-right: 3%;
+}
+.profileImage{
+    float:right;
+    margin-top: 1%;
+}
+.links{
+    width: 65%;
+    display: inline-block;
+    text-align: center;
+    margin-top: 1%;
+}
+.link{
+    text-decoration: none;
+    color: black;
+    width: 10%;
+    display: inline;
+}
+h3{
+    display: inline-block;
+    padding-right: 7%;
+}
