@@ -1,20 +1,18 @@
 import React from "react";
-import {Link,BrowserRouter as Router} from 'react-router-dom';
 import '../css/navbar.css';
-import Profile from "./Profile";
 
-function Navebar(){
+function Navebar(props){
 
     return (
     <div className="navbar">
         <h1 className="title">Day Logger</h1>
         <div className="links">
-        <h3><Link className="link" to='/log'>Log Day</Link></h3>
-        <h3><Link className="link" to='/edit'>Edit Questions</Link></h3>
-        <h3><Link className="link" to='/view'>View Data</Link></h3>
+        <h3 onClick = {props.logDayButton}>Log Day</h3>
+        <h3 onClick = {props.editButton}>Edit Questions</h3>
+        <h3 onClick = {props.viewButton}>View Data</h3>
         </div>
-        <Link className="link" to='/profile'><img className="profileImage" src = "/profile.png" alt=""
-            ></img> </Link>
+        <img className="profileImage" src = "/profile.png" onClick = {props.profileButton}>
+            </img> 
     </div>
     )
     

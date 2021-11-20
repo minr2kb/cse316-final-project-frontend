@@ -1,9 +1,13 @@
 import React from "react";
 
-function Edit(){
-    return (
-        <p>Edit</p>
-    );
+function Edit(props){
+    if(props.edit){
+        return (
+            <p>Edit</p>
+        );
+    }else{
+        return null;
+    }
 }
 
 export default Edit;
