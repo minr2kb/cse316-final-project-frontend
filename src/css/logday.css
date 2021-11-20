@@ -1,0 +1,70 @@
+.logForm{
+    width: 60%;
+    margin-left: 21%;
+    height: fit-content;
+}
+.topDiv{
+    border-radius: 15px;
+    margin: 1%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    height: max-content;
+}
+.arrowL{
+    width: 6%;
+    float: left;
+    margin-top: -1.5%;
+}
+.arrowR{
+    width: 6%;
+    float: right;
+    margin-top: -4.5%;
+}
+.date{
+    text-align: center;
+    font-weight: bold;
+}
+.middle{
+    background-color: white;
+    border-radius: 15px;
+    margin: 1%;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    font-size: large;
+    font-weight: bold;
+}
+.submit{
+    background-color:#f76b8a;
+    border-radius: 15px;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: #ffffff;
+    border: none;
+    margin-left: 1%;
+    font-size: large;
+}
+.radioDiv{
+    display: inline;
+    font-weight: normal;
+}
+input{
+    width:95%;
+    margin-left: 2%;
+    height: 25px;
+    border-radius: 5px;
+}
+.true{
+    width: 2.5%;
+    padding: 10%;
+}
+.false{
+    width: 2.5%;
+}
+@media screen and (max-width: 800px) {
+    .logForm{
+      width: 100%;
+      margin-left: 0%;
+    }
+}
