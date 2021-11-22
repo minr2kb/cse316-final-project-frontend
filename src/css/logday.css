@@ -14,11 +14,13 @@
     width: 6%;
     float: left;
     margin-top: -1.5%;
+    cursor: pointer;
 }
 .arrowR{
     width: 6%;
     float: right;
     margin-top: -4.5%;
+    cursor: pointer;
 }
 .date{
     text-align: center;
