@@ -41,12 +41,34 @@ function Logday(props){
                         }
                         if(q.type==="text"){
                             return <div className="middle">
-                            <div className = "in">{q.content}</div>
-                            <input></input>
-                            </div> 
+                                        <div className = "in">{q.content}</div>
+                                        <input></input>
+                                    </div> 
+                        }
+                        if(q.type==="number"){
+                            return <div className="middle">
+                                        <div className = "in">{q.content}</div>
+                                        <input type="number"></input>
+                                    </div>
+                        }
+                        if(q.type==="multipleChoice"){
+                            return <div className="middle">
+                                        <div className = "in">{q.content}</div>
+                
+                                        <input type="radio" className = "choose" name="name"></input>
+                                        <label for="true" className = "choose2">{q.choices[0]}</label>
+                                        <br/>
+                                        <input type="radio" className = "choose" name="name"></input>
+                                        <label for="true" className = "choose2">{q.choices[1]}</label>
+                                        <br/>
+                                        <input type="radio" className = "choose" name="name"></input>
+                                        <label for="true" className = "choose2">{q.choices[2]}</label>
+                                     </div>
                         }
                     })
                     }
+
+                    
 
                     <div className="down">
                         <button className="submit">Submit</button>
