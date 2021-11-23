@@ -36,12 +36,12 @@ function Profile(props){
                     <div className="top">
 
                         <div className="photo">Profile photo</div>
-                        <label className = "profileImage2" for="neweer">
+                        <label className = "profileImage2" htmlFor="neweer">
                         <img className="profileImage" src = {props.profilePic} alt="" onChange={handleImageSelected}></img>
                             <input type="file" id="neweer" name="image" placeholder="Choose" accept="image/" />
                             </label>
 
-                        <label className="chooseNewImage" for="neweer"> Choose New Image
+                        <label className="chooseNewImage" htmlFor="neweer"> Choose New Image
                         <input type="file" id="neweer" name="image" placeholder="Choose" accept="image/" onChange={handleImageSelected}/>
                         </label>
                         
@@ -64,7 +64,7 @@ function Profile(props){
                     </div>
 
                     <div className="down">
-                        <button className="save">save</button>
+                        <button className="save">Save</button>
                         <p className="logout">Logout</p>
                     </div>
             </form>

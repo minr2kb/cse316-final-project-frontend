@@ -1,9 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import '../css/logday.css';
 
 function Logday(props){
+
+    const incrementDate = (dateInput,increment)=> {
+        const dateFormatTotime = new Date(dateInput);
+        const increasedDate = new Date(dateFormatTotime.getTime() +(increment *86400000));
+        const month = increasedDate.getMonth()+1;
+        const date = month +"/"+increasedDate.getDate()+"/"+increasedDate.getFullYear();
+        props.setDate(date);
+    }
+
     if(props.logDay){
         return (
-            <p>Log</p>
+            <form className="logForm">
+                    <div className="topDiv">
+
+                        <img className="arrowL" src = "./arrowL.png"
+                           onClick = {()=>incrementDate(props.date,-1)}
+                        />
+                        <div className = "date">{props.date}</div>
+                        <img className="arrowR" src = "./arrowR.png"
+                            onClick = {()=>incrementDate(props.date,1)}
+                        />
+
+                    </div>
+
+                    {
+                    props.question.map((q)=>{
+                        if(q.type==="boolean"){
+                            return <div className="middle">
+                            <div className = "in">{q.content}</div>
+                            <div className = "radioDiv">
+                            <input type="radio" className = "true" name = "bool"></input>
+                            <label for="true">True</label>
+                            <input type="radio" className="false" name = "bool"></input>
+                            <label for="false">False</label>                       
+                            </div>
+                        </div>
+                        }
+                        if(q.type==="text"){
+                            return <div className="middle">
+                            <div className = "in">{q.content}</div>
+                            <input></input>
+                            </div> 
+                        }
+                    })
+                    }
+
+                    <div className="down">
+                        <button className="submit">Submit</button>
+                    </div>
+
+            </form>
         );
     }else{
         return null;
