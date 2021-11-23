@@ -12,18 +12,30 @@ function App() {
 
   // States
 
+    //user 
+    const [user, setUser] = useState(false);
+
     //navBar display states
-  const [logDay, setLogDay] = useState(true);
-  const [view, setView] = useState(false);
-  const [edit, setEdit] = useState(false);
-  const [profile, setProfile] = useState(false);
+    const [logDay, setLogDay] = useState(true);
+    const [view, setView] = useState(false);
+    const [edit, setEdit] = useState(false);
+    const [profile, setProfile] = useState(false);
 
     //error state
-  const [error, setError] = useState("");
+    const [error, setError] = useState("");
 
     //profile pic
     const [profilePic, setProfilePic] = useState("/profile.png");
 
+    //date
+    const [date, setDate] = useState("11/11/2021");
+
+    //question list
+    const [question, setQuestion] = useState(user.question || [
+      {type:"boolean",content:"life is hard"},
+      {type:"text",content:"what is your name?"},
+      {type:"boolean",content:"life is cool"}
+    ]);
 
   //Button fun
 
@@ -80,8 +92,6 @@ function parseJSON(response) {
   return response.json();
 }
 
-
-
 //return
 
   return (
@@ -94,6 +104,9 @@ function parseJSON(response) {
       />
       <Logday
       logDay = {logDay}
+      date = {date}
+      setDate = {setDate}
+      question = {question}
       />
       <Profile
       profile = {profile}
