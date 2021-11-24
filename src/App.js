@@ -73,13 +73,27 @@ function App() {
 		);
 	}
 
+	//edit question button 
+	const editQuestion = (question, id)=>{
+		const questions = question.map(
+			(q)=>{
+			  if(q.createdDate===id){
+				  return question;
+			  }
+			  return q;
+			}
+		  );
+		  setQuestion(question);
+	}
+
 	//add button in edit page
 	const add = ()=>{
 		const n = { 
 			createdDate:"",
 			questionType: "text", 
 			questionText: "", 
-			responses:"" };
+			responses:"" 
+		};
 		  setQuestion([n,...question]);
 	}
 
@@ -154,6 +168,7 @@ function App() {
 					edit={edit} 
 					question={question} 
 					deleteButton = {deleteButton}
+					editQuestion = {editQuestion}
 				/>
 			)}
 			{view && <View view={view} />}

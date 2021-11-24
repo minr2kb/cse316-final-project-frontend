@@ -1,7 +1,36 @@
 import React from "react";
+import { useState, useEffect} from "react";
 import "../css/logday.css";
 
 function Logday(props) {
+
+	const [ans, setAns] = useState([]);
+
+	const save = function(id,sol,type){
+		console.log(ans);
+		var bb = false;
+		const an = ans.map(
+			(q)=>{
+			  if(q.createdDate===id){
+				  bb=true;
+				  return q;
+			  }
+			  return q;
+			}
+		  );
+		  setAns(an);
+
+		const a = {
+			createdDate:id,
+			questionType: type,
+			responses:sol
+		};
+		if(!bb){
+		//setAns(ans.filter((a)=>a.createdDate !== id));
+		setAns([a,...ans]);
+		}
+	}
+
 	const incrementDate = (dateInput, increment) => {
 		const dateFormatTotime = new Date(dateInput);
 		const increasedDate = new Date(
@@ -27,12 +56,14 @@ function Logday(props) {
 								type="radio"
 								className="true"
 								name="bool"
+								onChange={()=>save(q.createdDate,"true","boolean")}
 							></input>
 							<label htmlFor="true">True</label>
 							<input
 								type="radio"
 								className="false"
 								name="bool"
+								onChange={()=>save(q.createdDate,"false","boolean")}
 							></input>
 							<label htmlFor="false">False</label>
 						</div>
@@ -45,6 +76,7 @@ function Logday(props) {
 						<div className="in">{q?.questionText}</div>
 						<input
 							value={q.response}
+							onChange={(e)=>save(q.createdDate,e.target.value,"boolean")}
 						></input>
 					</div>
 				);

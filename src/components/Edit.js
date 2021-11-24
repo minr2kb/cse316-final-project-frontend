@@ -2,6 +2,7 @@ import React from "react";
 import "../css/edit.css";
 
 function Edit(props) {
+
 	const questionRendering = q => {
 		switch (q?.questionType) {
 			case "boolean":
@@ -84,7 +85,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
-							onClick = {props.deleteButton(q?.createdDate)}
+							// onClick = {props.deleteButton(q?.createdDate)}
 						/>
 						<div className="qList">
 							<ul>
