@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Logday from "./components/Logday";
@@ -26,17 +26,40 @@ function App() {
 	const [profilePic, setProfilePic] = useState("/profile.png");
 
 	//date
-	const [date, setDate] = useState(today());
+	const [date, setDate] = useState(getToday());
 
 	//question list
-	const [question, setQuestion] = useState(
-		[
-			{ createdDate:"",questionType: "boolean", questionText: "life is hard", responses:"" },
-			{ createdDate:"",questionType: "text", questionText: "what is your name?", responses:"Kim John" },
-			{ createdDate:"",questionType: "boolean", questionText: "life is cool", responses:""  },
-			{ createdDate:"",questionType: "multipleChoice",questionText: "where are you from?",multipleChoice:["Japan", "Korea", "China"], responses:"" },
-		]
-	);
+	const [question, setQuestion] = useState([
+		{
+			_id: 0,
+			createdDate: "",
+			questionType: "text",
+			questionText: "What is your name?",
+			responses: {},
+		},
+		{
+			_id: 1,
+			createdDate: "",
+			questionType: "number",
+			questionText: "How old are you?",
+			responses: {},
+		},
+		{
+			_id: 2,
+			createdDate: "",
+			questionType: "boolean",
+			questionText: "Did you do your assignments?",
+			responses: {},
+		},
+		{
+			_id: 3,
+			createdDate: "",
+			questionType: "multiple",
+			questionText: "What is your favorite color?",
+			multipleChoice: ["Red", "Green", "Blue"],
+			responses: {},
+		},
+	]);
 
 	//Button fun
 
@@ -67,35 +90,28 @@ function App() {
 	};
 
 	//delete button in edit page
-	const deleteButton = (date)=>{
-		setQuestion(
-			question.filter((q)=>q.createdDate !== date)
-		);
-	}
 
-	//edit question button 
-	const editQuestion = (question, id)=>{
-		const questions = question.map(
-			(q)=>{
-			  if(q.createdDate===id){
-				  return question;
-			  }
-			  return q;
+	//edit question button
+	const editQuestion = (question, id) => {
+		const questions = question.map(q => {
+			if (q.createdDate === id) {
+				return question;
 			}
-		  );
-		  setQuestion(question);
-	}
+			return q;
+		});
+		setQuestion(question);
+	};
 
 	//add button in edit page
-	const add = ()=>{
-		const n = { 
-			createdDate:"",
-			questionType: "text", 
-			questionText: "", 
-			responses:"" 
+	const add = () => {
+		const n = {
+			createdDate: "",
+			questionType: "text",
+			questionText: "",
+			responses: "",
 		};
-		  setQuestion([n,...question]);
-	}
+		setQuestion([n, ...question]);
+	};
 
 	// API
 
@@ -126,19 +142,18 @@ function App() {
 
 	//current date format
 
-    function today() {
+	function getToday() {
 		let day = new Date();
 		let year = day.getFullYear();
 		let month = day.getMonth() + 1;
 		let d = day.getDate();
 		return month + "/" + d + "/" + year;
-  
-	};
+	}
 
 	//return
 
 	return (
-		<div className="App">
+		<div>
 			<Navbar
 				logDayButton={logDayButton}
 				viewButton={viewButton}
@@ -148,30 +163,33 @@ function App() {
 				edit={edit}
 				view={view}
 			/>
-			{logDay && (
-				<Logday
-					logDay={logDay}
-					date={date}
-					setDate={setDate}
-					question={question}
-				/>
-			)}
-			{profile && (
-				<Profile
-					profile={profile}
-					profilePic={profilePic}
-					setProfilePic={setProfilePic}
-				/>
-			)}
-			{edit && (
-				<Edit 
-					edit={edit} 
-					question={question} 
-					deleteButton = {deleteButton}
-					editQuestion = {editQuestion}
-				/>
-			)}
-			{view && <View view={view} />}
+			<div style={{ display: "flex", justifyContent: "center" }}>
+				<div className="main">
+					{logDay && (
+						<Logday
+							date={date}
+							setDate={setDate}
+							question={question}
+							setQuestion={setQuestion}
+							getToday={getToday}
+						/>
+					)}
+					{profile && (
+						<Profile
+							profilePic={profilePic}
+							setProfilePic={setProfilePic}
+						/>
+					)}
+					{edit && (
+						<Edit
+							question={question}
+							// editQuestion={editQuestion}
+							setQuestion={setQuestion}
+						/>
+					)}
+					{view && <View view={view} />}
+				</div>
+			</div>
 		</div>
 	);
 }

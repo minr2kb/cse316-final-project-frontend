@@ -1,46 +1,27 @@
-.navbar{
-    width: 100%;
-    background-color:white;
-    height: fit-content;
-    padding-bottom: 1%;
+.navbar {
+	background-color: white;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
 }
-.title{
-    float: left;
-    margin-left: 4px;
-    margin-right: 4%;
+.title {
+	margin: 0;
 }
-.profileImage{
-    float:right;
-    margin-top: 1%;
-    margin-right: 1%;
-    border-radius: 30%;
-    cursor: pointer;
-    margin-left: -12%;
+.profileImage {
+	cursor: pointer;
+	width: 45px;
+	height: 45px;
 }
-.links{
-    width: 65%;
-    display: inline-block;
-    text-align: center;
-    margin-top: 1%;
+.links {
+	display: flex;
 }
-.link{
-    text-decoration: none;
-    color: black;
-    width: 10%;
-    display: inline;
+.link {
+	margin-right: 20px;
 }
-h3{
-    display: inline-block;
-    padding-right: 5%;
-    cursor:pointer;
-}
+
 @media screen and (max-width: 600px) {
-    .title{
-        display: none;
-    }
-    .links{
-        width: 88%;
-        text-align: left;
-        margin-left: 7px;
-    }
+	.title {
+		display: none;
+	}
 }

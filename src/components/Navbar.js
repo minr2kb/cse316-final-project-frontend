@@ -2,25 +2,40 @@ import React from "react";
 import "../css/navbar.css";
 
 function Navbar(props) {
+	const {
+		logDayButton,
+		viewButton,
+		editButton,
+		profileButton,
+		logDay,
+		edit,
+		view,
+	} = props;
 
 	const titleStyle = {
-		color:"#66bfbf",
-		textDecoration:"underline"
-	}
+		color: "#66bfbf",
+		textDecoration: "underline",
+	};
 
 	return (
 		<div className="navbar">
-			<h1 className="title">Day Logger</h1>
+			<h2 className="title">Day Logger</h2>
 			<div className="links">
-				<h3 onClick={props.logDayButton}><div style={(props.logDay)?titleStyle:{}}>Log Day</div></h3>
-				<h3 onClick={props.editButton}><div style={(props.edit)?titleStyle:{}}>Edit Questions</div></h3>
-				<h3 onClick={props.viewButton}><div style={(props.view)?titleStyle:{}}>View Data</div></h3>
+				<h4 onClick={logDayButton} className="link">
+					<div style={logDay ? titleStyle : {}}>Log Day</div>
+				</h4>
+				<h4 onClick={editButton} className="link">
+					<div style={edit ? titleStyle : {}}>Edit Questions</div>
+				</h4>
+				<h4 onClick={viewButton} className="link">
+					<div style={view ? titleStyle : {}}>View Data</div>
+				</h4>
 			</div>
 			<img
 				className="profileImage"
 				src="/profile.png"
 				alt={"profile"}
-				onClick={props.profileButton}
+				onClick={profileButton}
 			/>
 		</div>
 	);
