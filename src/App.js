@@ -169,6 +169,7 @@ function App() {
 					question={question} 
 					deleteButton = {deleteButton}
 					editQuestion = {editQuestion}
+					add = {add}
 				/>
 			)}
 			{view && <View view={view} />}

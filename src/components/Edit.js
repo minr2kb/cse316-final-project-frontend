@@ -22,7 +22,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
-							// onClick = {props.deleteButton(q.createdDate)}
+							onClick = {()=>props.deleteButton(q.createdDate)}
 						/>
 					</div>
 				);
@@ -44,7 +44,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
-							// onClick = {props.deleteButton(q.createdDate)}
+							onClick = {()=>props.deleteButton(q.createdDate)}
 						/>
 					</div>
 				);
@@ -66,7 +66,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
-							// onClick = {props.deleteButton(q.createdDate)}
+							onClick = {()=>props.deleteButton(q.createdDate)}
 						/>
 					</div>
 				);
@@ -85,7 +85,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
-							// onClick = {props.deleteButton(q?.createdDate)}
+							onClick = {()=>props.deleteButton(q?.createdDate)}
 						/>
 						<div className="qList">
 							<ul>
@@ -112,7 +112,7 @@ function Edit(props) {
 			<div className="editQuestions2">
 				<h2 className="editQuestions">Edit Questions</h2>
 			</div>
-			<img className="addImage" alt="addImage" src="./add.png" />
+			<img className="addImage" alt="addImage" src="./add.png" onClick={props.add} />
 
 			{props?.question.map((q, idx) => (
 				<div key={`edit${idx}`}>{questionRendering(q)}</div>
