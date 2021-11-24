@@ -26,14 +26,15 @@ function App() {
 	const [profilePic, setProfilePic] = useState("/profile.png");
 
 	//date
-	const [date, setDate] = useState("11/11/2021");
+	const [date, setDate] = useState(today());
 
 	//question list
 	const [question, setQuestion] = useState(
-		user.question || [
-			{ type: "boolean", content: "life is hard" },
-			{ type: "text", content: "what is your name?" },
-			{ type: "boolean", content: "life is cool" },
+		[
+			{ createdDate:"",questionType: "boolean", questionText: "life is hard", responses:"" },
+			{ createdDate:"",questionType: "text", questionText: "what is your name?", responses:"Kim John" },
+			{ createdDate:"",questionType: "boolean", questionText: "life is cool", responses:""  },
+			{ createdDate:"",questionType: "multipleChoice",questionText: "where are you from?",multipleChoice:["Japan", "Korea", "China"], responses:"" },
 		]
 	);
 
@@ -65,6 +66,23 @@ function App() {
 		setEdit(false);
 	};
 
+	//delete button in edit page
+	const deleteButton = (date)=>{
+		setQuestion(
+			question.filter((q)=>q.createdDate !== date)
+		);
+	}
+
+	//add button in edit page
+	const add = ()=>{
+		const n = { 
+			createdDate:"",
+			questionType: "text", 
+			questionText: "", 
+			responses:"" };
+		  setQuestion([n,...question]);
+	}
+
 	// API
 
 	// profile image input
@@ -92,6 +110,17 @@ function App() {
 		return response.json();
 	}
 
+	//current date format
+
+    function today() {
+		let day = new Date();
+		let year = day.getFullYear();
+		let month = day.getMonth() + 1;
+		let d = day.getDate();
+		return month + "/" + d + "/" + year;
+  
+	};
+
 	//return
 
 	return (
@@ -101,6 +130,9 @@ function App() {
 				viewButton={viewButton}
 				editButton={editButton}
 				profileButton={profileButton}
+				logDay={logDay}
+				edit={edit}
+				view={view}
 			/>
 			{logDay && (
 				<Logday
@@ -117,7 +149,13 @@ function App() {
 					setProfilePic={setProfilePic}
 				/>
 			)}
-			{edit && <Edit edit={edit} question={question} />}
+			{edit && (
+				<Edit 
+					edit={edit} 
+					question={question} 
+					deleteButton = {deleteButton}
+				/>
+			)}
 			{view && <View view={view} />}
 		</div>
 	);

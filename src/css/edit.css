@@ -12,8 +12,9 @@
 }
 .addImage{
     float: right;
-    width: 6%;
-    margin-top: -9%;
+    width: 5%;
+    margin-top: -7%;
+    margin-left:10% ;
 }
 .middle{
     background-color: white;
@@ -54,6 +55,9 @@ input{
     border: none;
     margin-left: 4%;
     font-size: large;
+}
+.smallInput{
+    width: 60%;
 }
 @media screen and (max-width: 800px) {
     .editForm{

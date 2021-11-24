@@ -64,6 +64,17 @@ input{
 .false{
     width: 2.5%;
 }
+.choose{
+    float: left;
+    width: 2%;
+    margin: 1%;
+    padding: 1%;
+}
+.choose2{
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
 @media screen and (max-width: 800px) {
     .logForm{
       width: 100%;

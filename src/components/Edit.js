@@ -3,12 +3,12 @@ import "../css/edit.css";
 
 function Edit(props) {
 	const questionRendering = q => {
-		switch (q?.type) {
+		switch (q?.questionType) {
 			case "boolean":
 				return (
 					<div className="middle">
 						<input
-							value={q?.content}
+							value={q?.questionText}
 							contentEditable="true"
 						></input>
 						<select className="select">
@@ -21,6 +21,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
+							// onClick = {props.deleteButton(q.createdDate)}
 						/>
 					</div>
 				);
@@ -29,7 +30,7 @@ function Edit(props) {
 				return (
 					<div className="middle">
 						<input
-							value={q?.content}
+							value={q?.questionText}
 							contentEditable="true"
 						></input>
 						<select className="select">
@@ -42,6 +43,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
+							// onClick = {props.deleteButton(q.createdDate)}
 						/>
 					</div>
 				);
@@ -50,7 +52,7 @@ function Edit(props) {
 				return (
 					<div className="middle">
 						<input
-							value={q?.content}
+							value={q?.questionText}
 							contentEditable="true"
 						></input>
 						<select className="select">
@@ -63,6 +65,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
+							// onClick = {props.deleteButton(q.createdDate)}
 						/>
 					</div>
 				);
@@ -70,7 +73,7 @@ function Edit(props) {
 			case "multipleChoice":
 				return (
 					<div className="middle">
-						<input value={q.content} contentEditable="true"></input>
+						<input value={q.questionText} contentEditable="true"></input>
 						<select className="select">
 							<option value="1">multiple choice</option>
 							<option value="2">text</option>
@@ -81,6 +84,7 @@ function Edit(props) {
 							className="delete"
 							alt="delete"
 							src="./delete.png"
+							onClick = {props.deleteButton(q?.createdDate)}
 						/>
 						<div className="qList">
 							<ul>
