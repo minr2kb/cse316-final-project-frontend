@@ -1,84 +1,125 @@
-import React, { useState } from "react";
-import '../css/logday.css';
+import React from "react";
+import "../css/logday.css";
 
-function Logday(props){
+function Logday(props) {
+	const incrementDate = (dateInput, increment) => {
+		const dateFormatTotime = new Date(dateInput);
+		const increasedDate = new Date(
+			dateFormatTotime.getTime() + increment * 86400000
+		);
+		const month = increasedDate.getMonth() + 1;
+		const date =
+			month +
+			"/" +
+			increasedDate.getDate() +
+			"/" +
+			increasedDate.getFullYear();
+		props.setDate(date);
+	};
+	const questionRendering = q => {
+		switch (q.type) {
+			case "boolean":
+				return (
+					<div className="middle">
+						<div className="in">{q.content}</div>
+						<div className="radioDiv">
+							<input
+								type="radio"
+								className="true"
+								name="bool"
+							></input>
+							<label htmlFor="true">True</label>
+							<input
+								type="radio"
+								className="false"
+								name="bool"
+							></input>
+							<label htmlFor="false">False</label>
+						</div>
+					</div>
+				);
 
-    const incrementDate = (dateInput,increment)=> {
-        const dateFormatTotime = new Date(dateInput);
-        const increasedDate = new Date(dateFormatTotime.getTime() +(increment *86400000));
-        const month = increasedDate.getMonth()+1;
-        const date = month +"/"+increasedDate.getDate()+"/"+increasedDate.getFullYear();
-        props.setDate(date);
-    }
+			case "text":
+				return (
+					<div className="middle">
+						<div className="in">{q.content}</div>
+						<input></input>
+					</div>
+				);
 
-    if(props.logDay){
-        return (
-            <form className="logForm">
-                    <div className="topDiv">
+			case "number":
+				return (
+					<div className="middle">
+						<div className="in">{q.content}</div>
+						<input type="number"></input>
+					</div>
+				);
 
-                        <img className="arrowL" src = "./arrowL.png"
-                           onClick = {()=>incrementDate(props.date,-1)}
-                        />
-                        <div className = "date">{props.date}</div>
-                        <img className="arrowR" src = "./arrowR.png"
-                            onClick = {()=>incrementDate(props.date,1)}
-                        />
+			case "multipleChoice":
+				return (
+					<div className="middle">
+						<div className="in">{q.content}</div>
 
-                    </div>
+						<input
+							type="radio"
+							className="choose"
+							name="name"
+						></input>
+						<label htmlFor="true" className="choose2">
+							{q.choices[0]}
+						</label>
+						<br />
+						<input
+							type="radio"
+							className="choose"
+							name="name"
+						></input>
+						<label htmlFor="true" className="choose2">
+							{q.choices[1]}
+						</label>
+						<br />
+						<input
+							type="radio"
+							className="choose"
+							name="name"
+						></input>
+						<label htmlFor="true" className="choose2">
+							{q.choices[2]}
+						</label>
+					</div>
+				);
+			default:
+				<></>;
+		}
+	};
 
-                    {
-                    props.question.map((q)=>{
-                        if(q.type==="boolean"){
-                            return <div className="middle">
-                            <div className = "in">{q.content}</div>
-                            <div className = "radioDiv">
-                            <input type="radio" className = "true" name = "bool"></input>
-                            <label for="true">True</label>
-                            <input type="radio" className="false" name = "bool"></input>
-                            <label for="false">False</label>                       
-                            </div>
-                        </div>
-                        }
-                        if(q.type==="text"){
-                            return <div className="middle">
-                                        <div className = "in">{q.content}</div>
-                                        <input></input>
-                                    </div> 
-                        }
-                        if(q.type==="number"){
-                            return <div className="middle">
-                                        <div className = "in">{q.content}</div>
-                                        <input type="number"></input>
-                                    </div>
-                        }
-                        if(q.type==="multipleChoice"){
-                            return <div className="middle">
-                                        <div className = "in">{q.content}</div>
-                
-                                        <input type="radio" className = "choose" name="name"></input>
-                                        <label for="true" className = "choose2">{q.choices[0]}</label>
-                                        <br/>
-                                        <input type="radio" className = "choose" name="name"></input>
-                                        <label for="true" className = "choose2">{q.choices[1]}</label>
-                                        <br/>
-                                        <input type="radio" className = "choose" name="name"></input>
-                                        <label for="true" className = "choose2">{q.choices[2]}</label>
-                                     </div>
-                        }
-                    })
-                    }
+	return (
+		<form className="logForm">
+			<div className="topDiv">
+				<img
+					className="arrowL"
+					src="./arrowL.png"
+					alt={"arrowL"}
+					onClick={() => incrementDate(props.date, -1)}
+				/>
+				<div className="date">{props.date}</div>
+				<img
+					className="arrowR"
+					src="./arrowR.png"
+					alt={"arrowR"}
+					onClick={() => incrementDate(props.date, 1)}
+				/>
+			</div>
 
-                    
+			{props.question.map((q, idx) => (
+				<div key={`logday${idx}`}>{questionRendering(q)}</div>
+			))}
 
-                    <div className="down">
-                        <button className="submit">Submit</button>
-                    </div>
-
-            </form>
-        );
-    }else{
-        return null;
-    }
+			<div className="down">
+				<button className="submit">Submit</button>
+			</div>
+		</form>
+	);
 }
 
 export default Logday;

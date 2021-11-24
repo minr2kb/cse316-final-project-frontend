@@ -1,14 +1,8 @@
 import React from "react";
-import '../css/view.css';
+// import '../css/view.css';
 
-function View(props){
-    if(props.view){
-        return (
-            <p>View data</p>
-        );
-    }else{
-        return null;
-    }
+function View(props) {
+	return <p>View data</p>;
 }
 
 export default View;
