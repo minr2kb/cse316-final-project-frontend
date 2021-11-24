@@ -2,7 +2,6 @@ import React from "react";
 import "../css/edit.css";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { List } from "@mui/material";
 
 function Edit(props) {
 	const { question, setQuestion } = props;
