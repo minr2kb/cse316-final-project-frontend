@@ -21,7 +21,7 @@ function Logday(props) {
 			case "boolean":
 				return (
 					<div className="middle">
-						<div className="in">{q.content}</div>
+						<div className="in">{q?.content}</div>
 						<div className="radioDiv">
 							<input
 								type="radio"
@@ -42,7 +42,7 @@ function Logday(props) {
 			case "text":
 				return (
 					<div className="middle">
-						<div className="in">{q.content}</div>
+						<div className="in">{q?.content}</div>
 						<input></input>
 					</div>
 				);
@@ -50,7 +50,7 @@ function Logday(props) {
 			case "number":
 				return (
 					<div className="middle">
-						<div className="in">{q.content}</div>
+						<div className="in">{q?.content}</div>
 						<input type="number"></input>
 					</div>
 				);
@@ -58,7 +58,7 @@ function Logday(props) {
 			case "multipleChoice":
 				return (
 					<div className="middle">
-						<div className="in">{q.content}</div>
+						<div className="in">{q?.content}</div>
 
 						<input
 							type="radio"
@@ -66,7 +66,7 @@ function Logday(props) {
 							name="name"
 						></input>
 						<label htmlFor="true" className="choose2">
-							{q.choices[0]}
+							{q?.choices[0]}
 						</label>
 						<br />
 						<input
@@ -75,7 +75,7 @@ function Logday(props) {
 							name="name"
 						></input>
 						<label htmlFor="true" className="choose2">
-							{q.choices[1]}
+							{q?.choices[1]}
 						</label>
 						<br />
 						<input
@@ -84,7 +84,7 @@ function Logday(props) {
 							name="name"
 						></input>
 						<label htmlFor="true" className="choose2">
-							{q.choices[2]}
+							{q?.choices[2]}
 						</label>
 					</div>
 				);
@@ -111,7 +111,7 @@ function Logday(props) {
 				/>
 			</div>
 
-			{props.question.map((q, idx) => (
+			{props?.question.map((q, idx) => (
 				<div key={`logday${idx}`}>{questionRendering(q)}</div>
 			))}
 

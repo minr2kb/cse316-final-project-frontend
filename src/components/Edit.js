@@ -3,11 +3,14 @@ import "../css/edit.css";
 
 function Edit(props) {
 	const questionRendering = q => {
-		switch (q.type) {
+		switch (q?.type) {
 			case "boolean":
 				return (
 					<div className="middle">
-						<input value={q.content} contentEditable="true"></input>
+						<input
+							value={q?.content}
+							contentEditable="true"
+						></input>
 						<select className="select">
 							<option value="1">boolean</option>
 							<option value="2">text</option>
@@ -25,7 +28,10 @@ function Edit(props) {
 			case "text":
 				return (
 					<div className="middle">
-						<input value={q.content} contentEditable="true"></input>
+						<input
+							value={q?.content}
+							contentEditable="true"
+						></input>
 						<select className="select">
 							<option value="1">text</option>
 							<option value="2">boolean</option>
@@ -43,7 +49,10 @@ function Edit(props) {
 			case "number":
 				return (
 					<div className="middle">
-						<input value={q.content} contentEditable="true"></input>
+						<input
+							value={q?.content}
+							contentEditable="true"
+						></input>
 						<select className="select">
 							<option value="1">number</option>
 							<option value="2">text</option>
@@ -100,7 +109,7 @@ function Edit(props) {
 			</div>
 			<img className="addImage" alt="addImage" src="./add.png" />
 
-			{props.question.map((q, idx) => (
+			{props?.question.map((q, idx) => (
 				<div key={`edit${idx}`}>{questionRendering(q)}</div>
 			))}
 			<div className="down">

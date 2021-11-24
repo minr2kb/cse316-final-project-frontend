@@ -117,7 +117,7 @@ function App() {
 					setProfilePic={setProfilePic}
 				/>
 			)}
-			{edit && <Edit edit={edit} />}
+			{edit && <Edit edit={edit} question={question} />}
 			{view && <View view={view} />}
 		</div>
 	);
