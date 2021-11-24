@@ -8,7 +8,7 @@ function Edit(props) {
 				return (
 					<div className="middle">
 						<input
-							value={q?.questionText}
+							defaultValue={q?.questionText}
 							contentEditable="true"
 						></input>
 						<select className="select">
@@ -30,7 +30,7 @@ function Edit(props) {
 				return (
 					<div className="middle">
 						<input
-							value={q?.questionText}
+							defaultValue={q?.questionText}
 							contentEditable="true"
 						></input>
 						<select className="select">
@@ -52,7 +52,7 @@ function Edit(props) {
 				return (
 					<div className="middle">
 						<input
-							value={q?.questionText}
+							defaultValue={q?.questionText}
 							contentEditable="true"
 						></input>
 						<select className="select">
@@ -73,7 +73,7 @@ function Edit(props) {
 			case "multipleChoice":
 				return (
 					<div className="middle">
-						<input value={q.questionText} contentEditable="true"></input>
+						<input defaultValue={q.questionText} contentEditable="true"></input>
 						<select className="select">
 							<option value="1">multiple choice</option>
 							<option value="2">text</option>
