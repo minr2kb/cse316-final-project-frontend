@@ -3,21 +3,23 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 10px;
+	padding: 5px;
 }
 .title {
 	margin: 0;
 }
 .profileImage {
 	cursor: pointer;
-	width: 45px;
-	height: 45px;
+	width: 50px;
+	height: 50px;
 }
 .links {
 	display: flex;
+	margin-left: 10px;
 }
 .link {
-	margin-right: 20px;
+	margin-right: 30px;
+	font-weight: 400;
 }
 
 @media screen and (max-width: 600px) {

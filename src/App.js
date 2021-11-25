@@ -159,6 +159,7 @@ function App() {
 				viewButton={viewButton}
 				editButton={editButton}
 				profileButton={profileButton}
+				profilePic={profilePic}
 				logDay={logDay}
 				edit={edit}
 				view={view}

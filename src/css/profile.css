@@ -1,15 +1,10 @@
-.signForm {
-	width: 60%;
-	margin-left: 21%;
-	height: fit-content;
-}
-.top {
+.profile-block {
 	background-color: white;
-	border-radius: 15px;
-	margin: 1%;
-	padding-bottom: 3%;
-	padding-top: 3%;
-	height: max-content;
+	border-radius: 10px;
+	padding: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
 }
 .photo {
 	background-color: white;
@@ -20,32 +15,38 @@
 	font-weight: bold;
 	margin-bottom: 3%;
 }
-.profileImage2 {
-	cursor: pointer;
-}
+
 .chooseNewImage {
-	width: 20%;
 	border-radius: 10px;
 	border: none;
-	/* margin-left: 5%; */
-	margin: 15%;
-	padding: 1.3%;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 5px;
 	background-color: #66bfbf;
-}
-
-.down {
-	padding-bottom: 2%;
+	cursor: pointer;
 }
 
 .logout {
-	float: right;
-	margin-right: 4%;
+	cursor: pointer;
 	text-decoration: underline;
-	margin-top: 2%;
+	margin: 10px;
 }
 
 input[type="file"] {
 	position: fixed;
-	right: 100%;
-	bottom: 100%;
+}
+
+.removeImage {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.profile-input {
+	border: solid 1px gray;
+	width: calc(100% - 24px);
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }

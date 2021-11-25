@@ -2,6 +2,7 @@ import React from "react";
 import "../css/profile.css";
 
 function Profile(props) {
+	const { profilePic, setProfilePic } = props;
 	const handleImageSelected = event => {
 		if (event.target.files && event.target.files[0]) {
 			const selectedFile = event.target.files[0];
@@ -14,80 +15,91 @@ function Profile(props) {
 
 			props.uploadImageToCloudinaryAPIMethod(formData).then(response => {
 				console.log("Upload success");
-				props.setProfilePic(response.url);
+				setProfilePic(response.url);
 			});
 		}
 	};
 
 	const removeImage = () => {
-		props.setProfilePic("/profile.png");
+		setProfilePic("/profile.png");
 	};
 
 	return (
-		<form className="signForm">
-			<h2 className="editer">Edit Profile</h2>
+		<>
+			<h3 style={{ fontWeight: 900, padding: "10px", margin: 0 }}>
+				Edit Profile
+			</h3>
 
-			<div className="top">
-				<div className="photo">Profile photo</div>
-				<label className="profileImage2" htmlFor="neweer">
-					<img
-						className="profileImage"
-						src={props.profilePic}
-						alt=""
-						onChange={handleImageSelected}
-					></img>
-					<input
-						type="file"
-						id="neweer"
-						name="image"
-						placeholder="Choose"
-						accept="image/"
-					/>
-				</label>
-
-				<label className="chooseNewImage" htmlFor="neweer">
-					{" "}
-					Choose New Image
-					<input
-						type="file"
-						id="neweer"
-						name="image"
-						placeholder="Choose"
-						accept="image/"
-						onChange={handleImageSelected}
-					/>
-				</label>
-
-				<span
-					className="removeImage"
-					onClick={removeImage}
-					style={{ cursor: "pointer" }}
+			<div className="profile-block">
+				<h4 style={{ fontWeight: 900, margin: 0 }}>Profile photo</h4>
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "space-between",
+						maxWidth: "22rem",
+					}}
 				>
-					Remove Image
-				</span>
+					<label>
+						<input
+							type="file"
+							name="image"
+							id="chooseNewProfile"
+							accept="image/*"
+							onChange={handleImageSelected}
+							style={{ display: "none" }}
+						/>
+						<img
+							className="profileImage"
+							src={profilePic}
+							alt={"profile"}
+						/>
+					</label>
+
+					<label>
+						<input
+							type="file"
+							name="image"
+							id="chooseNewProfile"
+							accept="image/*"
+							onChange={handleImageSelected}
+							style={{ display: "none", cursor: "pointer" }}
+						/>
+						<div className="chooseNewImage">Choose New Image</div>
+					</label>
+
+					<div className="removeImage" onClick={removeImage}>
+						Remove Image
+					</div>
+				</div>
 			</div>
 
-			<div className="middle">
-				<div className="in">Name</div>
-				<input></input>
+			<div className="profile-block">
+				<h4 style={{ fontWeight: 900, margin: 0 }}>Name</h4>
+				<input className="profile-input" placeholder="Name" />
 			</div>
-			<div className="middle">
-				<div className="in">Email</div>
-				<input></input>
+			<div className="profile-block">
+				<h4 style={{ fontWeight: 900, margin: 0 }}>Email</h4>
+				<input className="profile-input" placeholder="Email" />
 			</div>
-			<div className="middle">
-				<div className="in">Address</div>
-				<input></input>
-				<br />
-				<br />
-				<input></input>
+			<div className="profile-block">
+				<h4 style={{ fontWeight: 900, margin: 0 }}>Address</h4>
+				<input className="profile-input" placeholder="Address1" />
+
+				<input className="profile-input" placeholder="Address2" />
 			</div>
 
-			<div className="down">
+			<div
+				style={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "space-between",
+				}}
+			>
 				<button className="save">Save</button>
-				<p className="logout">Logout</p>
+				<div className="logout">Logout</div>
 			</div>
-		</form>
+		</>
 	);
 }
 

@@ -7,7 +7,7 @@ function Edit(props) {
 	const { question, setQuestion } = props;
 
 	return (
-		<form className="editForm">
+		<>
 			<div
 				style={{
 					display: "flex",
@@ -83,7 +83,7 @@ function Edit(props) {
 			<div className="down">
 				<button className="save">Save</button>
 			</div>
-		</form>
+		</>
 	);
 }
 

@@ -7,6 +7,7 @@ function Navbar(props) {
 		viewButton,
 		editButton,
 		profileButton,
+		profilePic,
 		logDay,
 		edit,
 		view,
@@ -33,7 +34,7 @@ function Navbar(props) {
 			</div>
 			<img
 				className="profileImage"
-				src="/profile.png"
+				src={profilePic}
 				alt={"profile"}
 				onClick={profileButton}
 			/>
