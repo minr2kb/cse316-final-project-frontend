@@ -11,7 +11,15 @@ function App() {
 	// States
 
 	//user
-	const [user, setUser] = useState(false);
+	const [user, setUser] = useState({
+		_id: 0,
+		userName: "Kyungbae Min",
+		password: "12345678",
+		email: "kbmin1129@gmail.com",
+		address1: "Cheongju-si",
+		address2: "Bunpyeong-dong",
+		image: "",
+	});
 
 	//navBar display states
 	const [logDay, setLogDay] = useState(true);
@@ -179,6 +187,8 @@ function App() {
 						<Profile
 							profilePic={profilePic}
 							setProfilePic={setProfilePic}
+							user={user}
+							setUser={setUser}
 						/>
 					)}
 					{edit && (

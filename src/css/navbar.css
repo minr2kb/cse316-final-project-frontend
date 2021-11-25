@@ -20,6 +20,7 @@
 .link {
 	margin-right: 30px;
 	font-weight: 400;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {

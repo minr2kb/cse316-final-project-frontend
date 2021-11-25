@@ -2,7 +2,7 @@ import React from "react";
 import "../css/profile.css";
 
 function Profile(props) {
-	const { profilePic, setProfilePic } = props;
+	const { profilePic, setProfilePic, user, setUser } = props;
 	const handleImageSelected = event => {
 		if (event.target.files && event.target.files[0]) {
 			const selectedFile = event.target.files[0];
@@ -51,7 +51,7 @@ function Profile(props) {
 						/>
 						<img
 							className="profileImage"
-							src={profilePic}
+							src={user.image || "/profile.png"}
 							alt={"profile"}
 						/>
 					</label>
@@ -76,17 +76,33 @@ function Profile(props) {
 
 			<div className="profile-block">
 				<h4 style={{ fontWeight: 900, margin: 0 }}>Name</h4>
-				<input className="profile-input" placeholder="Name" />
+				<input
+					className="profile-input"
+					placeholder="Name"
+					value={user.userName}
+				/>
 			</div>
 			<div className="profile-block">
 				<h4 style={{ fontWeight: 900, margin: 0 }}>Email</h4>
-				<input className="profile-input" placeholder="Email" />
+				<input
+					className="profile-input"
+					placeholder="Email"
+					value={user.email}
+				/>
 			</div>
 			<div className="profile-block">
 				<h4 style={{ fontWeight: 900, margin: 0 }}>Address</h4>
-				<input className="profile-input" placeholder="Address1" />
+				<input
+					className="profile-input"
+					placeholder="Address1"
+					value={user.address1}
+				/>
 
-				<input className="profile-input" placeholder="Address2" />
+				<input
+					className="profile-input"
+					placeholder="Address2"
+					value={user.address2}
+				/>
 			</div>
 
 			<div
