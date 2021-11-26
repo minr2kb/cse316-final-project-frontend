@@ -16,7 +16,7 @@ import {
 import "../css/view.css";
 import { useEffect, useState, useCallback } from "react";
 
-function View(props) {
+function View() {
 	const [questions, setQuestions] = useState([]);
 	const getQuestions = async () => {
 		// This part is dummy data. I'll change to http fetch function later.
