@@ -2,16 +2,7 @@ import React from "react";
 import "../css/navbar.css";
 
 function Navbar(props) {
-	const {
-		logDayButton,
-		viewButton,
-		editButton,
-		profileButton,
-		profilePic,
-		logDay,
-		edit,
-		view,
-	} = props;
+	const { profilePic, currentPage, setCurrentPage } = props;
 
 	const titleStyle = {
 		color: "#66bfbf",
@@ -22,21 +13,29 @@ function Navbar(props) {
 		<div className="navbar">
 			<h2 className="title">Day Logger</h2>
 			<div className="links">
-				<h4 onClick={logDayButton} className="link">
-					<div style={logDay ? titleStyle : {}}>Log Day</div>
+				<h4 onClick={() => setCurrentPage("logday")} className="link">
+					<div
+						style={{ ...(currentPage === "logday" && titleStyle) }}
+					>
+						Log Day
+					</div>
 				</h4>
-				<h4 onClick={editButton} className="link">
-					<div style={edit ? titleStyle : {}}>Edit Questions</div>
+				<h4 onClick={() => setCurrentPage("edit")} className="link">
+					<div style={{ ...(currentPage === "edit" && titleStyle) }}>
+						Edit Questions
+					</div>
 				</h4>
-				<h4 onClick={viewButton} className="link">
-					<div style={view ? titleStyle : {}}>View Data</div>
+				<h4 onClick={() => setCurrentPage("view")} className="link">
+					<div style={{ ...(currentPage === "view" && titleStyle) }}>
+						View Data
+					</div>
 				</h4>
 			</div>
 			<img
 				className="profileImage"
 				src={profilePic}
 				alt={"profile"}
-				onClick={profileButton}
+				onClick={() => setCurrentPage("profile")}
 			/>
 		</div>
 	);

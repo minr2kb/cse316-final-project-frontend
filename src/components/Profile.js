@@ -112,7 +112,7 @@ function Profile(props) {
 					justifyContent: "space-between",
 				}}
 			>
-				<button className="save">Save</button>
+				<button className="save-button">Save</button>
 				<div className="logout">Logout</div>
 			</div>
 		</>
