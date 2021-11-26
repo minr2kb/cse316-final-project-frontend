@@ -21,7 +21,7 @@ function Edit(props) {
 			>
 				<h3 style={{ fontWeight: 900 }}>Edit Questions</h3>
 
-				<AddCircleOutlineIcon fontSize="medium" />
+				<AddCircleOutlineIcon fontSize="medium" onClick={props.add}/>
 			</div>
 
 			{question.map((q, idx) => (
