@@ -24,6 +24,10 @@ function Profile(props) {
 		setProfilePic("/profile.png");
 	};
 
+	const logoutButton = ()=>{
+		props.setCurrentPage("login");
+	}
+
 	return (
 		<>
 			<h3 style={{ fontWeight: 900, padding: "10px", margin: 0 }}>
@@ -113,7 +117,10 @@ function Profile(props) {
 				}}
 			>
 				<button className="save-button">Save</button>
-				<div className="logout">Logout</div>
+				<div 
+					className="logout"
+					onClick = {logoutButton}
+				>Logout</div>
 			</div>
 		</>
 	);

@@ -6,37 +6,17 @@ import Logday from "./components/Logday";
 import View from "./components/View";
 import Edit from "./components/Edit";
 import Profile from "./components/Profile";
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 function App() {
 	// States
 
 	const [user, setUser] = useState({});
-	const [currentPage, setCurrentPage] = useState("logday");
-	const [error, setError] = useState("");
+	const [currentPage, setCurrentPage] = useState("login");
+	const [error, setError] = useState("place holder for error");
 	const [profilePic, setProfilePic] = useState("");
 	const [date, setDate] = useState("");
-
-	//edit questions button
-	// const editQuestion = (questions, id) => {
-	// 	const questions = questions.map(q => {
-	// 		if (q.createdDate === id) {
-	// 			return questions;
-	// 		}
-	// 		return q;
-	// 	});
-	// 	setQuestions(questions);
-	// };
-
-	//add button in edit page
-	// const add = () => {
-	// 	const n = {
-	// 		createdDate: "",
-	// 		questionType: "text",
-	// 		questionText: "",
-	// 		responses: "",
-	// 	};
-	// 	setQuestions([n, ...questions]);
-	// };
 
 	//current date format
 
@@ -92,10 +72,25 @@ function App() {
 							setProfilePic={setProfilePic}
 							user={user}
 							setUser={setUser}
+							setCurrentPage={setCurrentPage}
 						/>
 					)}
 					{currentPage === "edit" && <Edit />}
 					{currentPage === "view" && <View />}
+					{currentPage === "login" && (
+						<Login 
+							currentPage={currentPage}
+							setCurrentPage={setCurrentPage}
+							error = {error}
+						/>
+					)}
+					{currentPage === "signup" && (
+						<Signup 
+							currentPage={currentPage}
+							setCurrentPage={setCurrentPage}
+							error = {error}
+						/>
+					)}
 				</div>
 			</div>
 		</div>

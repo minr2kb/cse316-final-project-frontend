@@ -10,7 +10,9 @@ function Navbar(props) {
 	};
 
 	return (
-		<div className="navbar">
+		<div className="navbar" 
+			style={{display:((props.currentPage==="login")||(props.currentPage==="signup"))?'none':""}}
+		>
 			<h2 className="title">Day Logger</h2>
 			<div className="links">
 				<h4 onClick={() => setCurrentPage("logday")} className="link">
