@@ -45,7 +45,7 @@
 	cursor: pointer;
 }
 
-.loginButton {
+.login-button {
 	width: 50%;
 	background-color: #66bfbf;
 	border-radius: 10px;
@@ -86,11 +86,7 @@
 		margin-top: 0;
 	}
 
-	.loginButton {
-		width: 100%;
-	}
-
-	.signup-button {
+	.login-button {
 		width: 100%;
 	}
 }

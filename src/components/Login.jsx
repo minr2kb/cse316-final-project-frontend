@@ -33,7 +33,7 @@ function Login(props) {
 						<div className="error">{error}</div>
 					</div>
 					<div className="loginButtons">
-						<button className="loginButton" onClick={loginButton}>
+						<button className="login-button" onClick={loginButton}>
 							Log In
 						</button>
 						<hr style={{ width: "inherit" }} />

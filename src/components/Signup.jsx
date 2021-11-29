@@ -52,7 +52,7 @@ function Signup(props) {
 
 						<div className="signup-buttons">
 							<button
-								className="signup-button"
+								className="login-button"
 								onClick={signupButton}
 							>
 								Sign Up
