@@ -11,7 +11,7 @@ import {
 	CartesianGrid,
 	Tooltip,
 	Legend,
-	ResponsiveContainer,
+	Cell,
 } from "recharts";
 import "../css/view.css";
 import { useEffect, useState, useCallback } from "react";
@@ -59,7 +59,7 @@ function View() {
 				questionText: "What is your favorite color?",
 				multipleChoice: ["Red", "Green", "Blue"],
 				createdDate: new Date(),
-				responses: { "11/27/2021": 0 },
+				responses: { "11/27/2021":0},
 			},
 		];
 		setQuestions(newQuestions);
@@ -72,52 +72,37 @@ function View() {
 			response2: 3,
 			response3: 4,
 		},
-		{
-			name: " ",
-			response1: 2,
-			response2: 3,
-			response3: 4,
-		},
 	];
 
 	const dataForBool = [
-		{
-			name: "Question 1",
-			uv: 4000,
-			pv: 2400,
-			amt: 2400,
-		},
-		{
-			name: "Page B",
-			uv: 3000,
-			pv: 1398,
-			amt: 2210,
-		},
+		{ name: 'True', value: 400 },
+		{ name: 'False', value: 400 },
 	];
 
 	const dataForNumber = [
 		{
-			name: "Page A",
-			uv: 4000,
-			pv: 2400,
-			amt: 2400,
+			name: "Question",
+			response: [0,2],
+			response2:2,
 		},
 	];
 
+	const COLORS = ['#0088FE', '#FF8042'];
+	
 	useEffect(() => {
 		getQuestions();
 	}, []);
 
 	useEffect(() => {
 		questions.forEach(q => {
-			if (q.questionType === "multiple" && !dataForMultiple.includes(q)) {
+			if (q.questionType === "multiple") {
 				var response1 = 0;
 				var response2 = 0;
 				var response3 = 0;
 
 				for (const r of Object.keys(q.responses)) {
 					if (r === 0) {
-						response1++;
+						response1=89;
 					}
 					if (r === 1) {
 						response2++;
@@ -126,14 +111,17 @@ function View() {
 						response3++;
 					}
 				}
-
+				
 				const newQ = {
 					name: q.questionText,
 					response1: response1,
 					response2: response2,
 					response3: response3,
 				};
-				dataForMultiple.push(newQ);
+
+				if(!dataForMultiple.includes(newQ)){
+					dataForMultiple.push(newQ);
+				};
 				console.log(dataForMultiple);
 			}
 			if (q.questionType === "bool" && !dataForBool.includes(q)) {
@@ -146,9 +134,17 @@ function View() {
 	}, [questions]);
 
 	return (
-		<div className="rechart">
+		<div className="viewData">
+
+			<div className="textData">
+				<div>What is your name?</div>
+				<br/>
+				<div className="dateBlock">11/12/2021</div>
+				<div className="responseBlock">Kyungbae Min</div>
+			</div>
+
 			<div className="bar">
-				<p>Bar graph</p>
+				<p>What is your favorite color?</p>
 				<div width="100%" height="100%">
 					<BarChart
 						width={500}
@@ -175,7 +171,7 @@ function View() {
 
 			<div className="line">
 				<div width="100%" height="100%">
-					<p>Line graph</p>
+					<p>How old are you?</p>
 					<LineChart
 						width={500}
 						height={300}
@@ -189,12 +185,34 @@ function View() {
 						<Legend />
 						<Line
 							type="monotone"
-							dataKey="pv"
+							dataKey="response"
 							stroke="#8884d8"
 							activeDot={{ r: 8 }}
 						/>
-						{/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
+						
 					</LineChart>
+				</div>
+			</div>
+
+			<div className="pie">
+				<div width="100%" height="100%">
+					<p>Did you do your assignments?</p>
+					<PieChart width={400} height={400}>
+						<Pie
+							data={dataForBool}
+							cx="50%"
+							cy="50%"
+							labelLine={false}
+							outerRadius={80}
+							fill="#8884d8"
+							dataKey="value"
+						>
+							{dataForBool.map((entry, index) => (
+							<Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+							))}
+						</Pie>
+						<Legend/>
+					</PieChart>
 				</div>
 			</div>
 		</div>
