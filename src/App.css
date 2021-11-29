@@ -38,7 +38,7 @@ input[type="text"] {
 input[type="submit"]:hover,
 input[type="button"]:hover,
 button:hover {
-	transform: scale(1.1);
+	transform: scale(1.01);
 }
 
 .main {

@@ -1,49 +1,68 @@
 import "../css/signup.css";
 import "../css/login.css";
-function Signup(props){
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
-    const signupButton = ()=>{
-        //temporary: to be changed 
-        props.setCurrentPage("logday");
-    }
-    const signupClose = ()=>{
-        props.setCurrentPage("login");
-    }
+function Signup(props) {
+	const { setCurrentPage, error } = props;
 
-    return (
+	const signupButton = () => {
+		//temporary: to be changed
+		setCurrentPage("logday");
+	};
+	const signupClose = () => {
+		setCurrentPage("login");
+	};
 
-            <div className="signHtml">
-                <div className = "tit" style={{float:'left'}}><b>Sign Up</b></div>
-                <img className="cross" src="close.png" onClick={signupClose} alt=""></img>
-                <div className="sdiv">
-                    <div className="signinInputs">
-                         <div>Name</div>
-                        <input className="loginEmail" 
-                            //onChange={}
-                        ></input>
-                        <div>Email</div>
-                        <input 
-                            className="loginEmail" 
-                            //onChange={}
-                        ></input>
-                        <div >Password</div>
-                        <input 
-                            className = "loginEmail" 
-                            //onChange={}
-                        ></input>
-                        <p className="error">{props.error}</p>
-                    </div>
+	return (
+		<div className="login-layout">
+			<div className="board">
+				<div className="loginHtml">
+					<div
+						style={{
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "space-between",
+							marginBottom: "20px",
+						}}
+					>
+						<h3 style={{ margin: 0 }}>Sign Up</h3>
+						<CloseOutlinedIcon onClick={signupClose} />
+					</div>
+					<div className="sdiv">
+						<div className="loginInputs">
+							<div>Name</div>
+							<input
+								className="login-input"
+								//onChange={}
+							/>
+							<div>Email</div>
+							<input
+								className="login-input"
+								//onChange={}
+							/>
+							<div>Password</div>
+							<input
+								className="login-input"
+								//onChange={}
+							/>
+							<div className="error">{error}</div>
+						</div>
 
-                    <br style={{size:'10px'}}/>
+						<br style={{ size: "10px" }} />
 
-                    <div className="signinButtons">
-                        <button className="signupButton" 
-                        onClick={signupButton}
-                        >Sign Up</button>
-                    </div>
-                </div>
-            </div>
-        ); 
+						<div className="signup-buttons">
+							<button
+								className="signup-button"
+								onClick={signupButton}
+							>
+								Sign Up
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Signup;

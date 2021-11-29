@@ -1,46 +1,53 @@
 import "../css/login.css";
-function Login(props){
+function Login(props) {
+	const { currentPage, setCurrentPage, error } = props;
 
-    const signupButton = ()=>{
-        props.setCurrentPage("signup");
-    }
+	const signupButton = () => {
+		setCurrentPage("signup");
+	};
 
-    const loginButton = ()=>{
-        //temporary: to be changed 
-        props.setCurrentPage("logday");
-    }
+	const loginButton = () => {
+		//temporary: to be changed
+		setCurrentPage("logday");
+	};
 
-    return (
-        <div className="board">
-            <div className="loginHead" style={{textAlign:'center'}}>
-                <h1> CSE316 Final Project</h1>
-            </div>
+	return (
+		<div className="login-layout">
+			<div className="board">
+				<div className="loginHead">
+					<h2 style={{ margin: 0, color: "white" }}>Log Day</h2>
+				</div>
 
-            <div className="loginHtml">
-                    <div className="loginInputs">
-                        <div>Email</div>
-                        <input 
-                            className="loginEmail"
-                            //onChange={}
-                        ></input>
-                        <div >Password</div>
-                        <input className = "loginPassword"
-                                //onChange={}
-                            ></input>
-                        <p className="error">{props.error}</p>
-                    </div>   
-                    <div className="loginButtons">
-                        <button className="loginButton"
-                        onClick={loginButton}
-                        >Log In</button>
-                        <hr style={{width:'inherit'}}/>
-                        <button className="creatnewaccountButton" 
-                        onClick={signupButton}
-                        >Create New Account</button>
-                    </div>
-            </div>
-        </div>
-        ); 
+				<div className="loginHtml">
+					<div className="loginInputs">
+						<div>Email</div>
+						<input
+							className="login-input"
+							//onChange={}
+						/>
+						<div>Password</div>
+						<input
+							className="login-input"
+							//onChange={}
+						/>
+						<div className="error">{error}</div>
+					</div>
+					<div className="loginButtons">
+						<button className="loginButton" onClick={loginButton}>
+							Log In
+						</button>
+						<hr style={{ width: "inherit" }} />
+						<button
+							className="creatnewaccountButton"
+							onClick={signupButton}
+						>
+							Create New Account
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Login;
