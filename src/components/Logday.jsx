@@ -70,6 +70,7 @@ function Logday(props) {
 				return (
 					<input
 						className="text-response-input"
+						type="text"
 						value={q.responses[date] || ""}
 						onChange={e => editResponse(q, e.currentTarget.value)}
 					/>

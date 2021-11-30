@@ -6,15 +6,15 @@ import Logday from "./components/Logday";
 import View from "./components/View";
 import Edit from "./components/Edit";
 import Profile from "./components/Profile";
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import { getUserAPI } from "./api/client";
 
 function App() {
 	// States
 
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState(null);
 	const [currentPage, setCurrentPage] = useState("login");
-	const [error, setError] = useState("place holder for error");
 	const [profilePic, setProfilePic] = useState("");
 	const [date, setDate] = useState("");
 
@@ -30,17 +30,11 @@ function App() {
 
 	//fetch
 	const getUser = async () => {
-		const newUser = {
-			_id: 0,
-			userName: "Kyungbae Min",
-			password: "12345678",
-			email: "kbmin1129@gmail.com",
-			address1: "Cheongju-si",
-			address2: "Bunpyeong-dong",
-			image: "",
-		};
-		setUser(newUser);
-		setProfilePic(newUser?.image || "/profile.png");
+		getUserAPI().then(res => {
+			console.log(res);
+			setUser(res);
+			setProfilePic(res?.image || "/profile.png");
+		});
 	};
 
 	useEffect(() => {
@@ -49,14 +43,18 @@ function App() {
 	}, []);
 
 	//return
+	console.log(user);
 
 	return (
 		<div>
-			<Navbar
-				profilePic={profilePic}
-				currentPage={currentPage}
-				setCurrentPage={setCurrentPage}
-			/>
+			{user && (
+				<Navbar
+					profilePic={profilePic}
+					currentPage={currentPage}
+					setCurrentPage={setCurrentPage}
+				/>
+			)}
+
 			<div style={{ display: "flex", justifyContent: "center" }}>
 				<div className="main">
 					{currentPage === "logday" && (
@@ -78,17 +76,15 @@ function App() {
 					{currentPage === "edit" && <Edit />}
 					{currentPage === "view" && <View />}
 					{currentPage === "login" && (
-						<Login 
+						<Login
 							currentPage={currentPage}
 							setCurrentPage={setCurrentPage}
-							error = {error}
 						/>
 					)}
 					{currentPage === "signup" && (
-						<Signup 
+						<Signup
 							currentPage={currentPage}
 							setCurrentPage={setCurrentPage}
-							error = {error}
 						/>
 					)}
 				</div>

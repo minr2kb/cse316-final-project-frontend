@@ -4,21 +4,21 @@
 	justify-content: space-between;
 	padding: 10px;
 }
-.arrowL {
-	width: 6%;
-	float: left;
-	margin-top: -1.5%;
-	cursor: pointer;
-}
-.arrowR {
-	width: 6%;
-	float: right;
-	margin-top: -4.5%;
-	cursor: pointer;
-}
 
 .radio-div {
 	display: inline;
 	font-weight: 400;
 	font-size: medium;
+}
+
+.number-response-input {
+	width: 8rem;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.text-response-input {
+	width: calc(100% - 14px);
+	border-radius: 5px;
+	padding: 5px;
 }

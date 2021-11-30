@@ -178,6 +178,7 @@ function Edit(props) {
 					<div className="middle">
 						<input
 							value={q?.questionText}
+							type="text"
 							className="question-input"
 							onChange={e => editQuestionText(e, q)}
 						/>

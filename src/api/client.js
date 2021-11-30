@@ -1,9 +1,12 @@
 // profile image input
-const SERVER_URL = "http://localhost:5001";
+const SERVER_URL = "https://stark-everglades-14139.herokuapp.com";
+// const SERVER_URL = "http://localhost:5001";
 
 const defaultHeaders = {
 	headers: {
-		"Content-Type": "application/json; charset=UTF-8",
+		"Content-Type": "application/json",
+		withCredentials: true,
+		// crossDomain: true,
 	},
 };
 
@@ -23,7 +26,7 @@ export const getUserAPI = () => {
 	return fetch(`${SERVER_URL}/api/user`, {
 		...defaultHeaders,
 	}).then(response => {
-		if (response.status >= 500) {
+		if (response.status >= 400) {
 			return null;
 		} else {
 			return parseJSON(response);
@@ -31,15 +34,19 @@ export const getUserAPI = () => {
 	});
 };
 
-export const updateUserAPI = user => {
+export const updateUserAPI = (userName, address1, address2) => {
 	return fetch(`${SERVER_URL}/api/user`, {
 		...defaultHeaders,
 		method: "PUT",
-		body: JSON.stringify(user),
+		body: JSON.stringify({
+			userName: userName,
+			address1: address1,
+			address2: address2,
+		}),
 	}).then(checkStatus);
 };
 
-export const registerAPI = (name, email, password) => {
+export const registerAPI = (userName, email, password) => {
 	return fetch(`${SERVER_URL}/api/register`, {
 		...defaultHeaders,
 		method: "POST",

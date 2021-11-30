@@ -1,16 +1,36 @@
-import "../css/signup.css";
 import "../css/login.css";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { useState } from "react";
+import { registerAPI } from "../api/client";
 
 function Signup(props) {
-	const { setCurrentPage, error } = props;
+	const { setCurrentPage } = props;
+	const [error, setError] = useState("");
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-	const signupButton = () => {
+	const signup = () => {
 		//temporary: to be changed
-		setCurrentPage("logday");
-	};
-	const signupClose = () => {
-		setCurrentPage("login");
+		// setCurrentPage("logday");
+
+		let mail_format = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+		if (name.length < 1) {
+			setError("Name is not given");
+		} else {
+			if (!mail_format.test(email)) {
+				setError("Email is invalid");
+			} else {
+				if (password.length < 1) {
+					setError("Password is not given");
+				} else {
+					setError("");
+					registerAPI(name, email, password).then(res =>
+						console.log(res)
+					);
+				}
+			}
+		}
 	};
 
 	return (
@@ -26,24 +46,34 @@ function Signup(props) {
 						}}
 					>
 						<h3 style={{ margin: 0 }}>Sign Up</h3>
-						<CloseOutlinedIcon onClick={signupClose} />
+						<CloseOutlinedIcon
+							onClick={() => setCurrentPage("login")}
+							style={{ cursor: "pointer" }}
+						/>
 					</div>
-					<div className="sdiv">
+					<div>
 						<div className="loginInputs">
 							<div>Name</div>
 							<input
 								className="login-input"
-								//onChange={}
+								value={name}
+								onChange={e => setName(e.currentTarget.value)}
 							/>
 							<div>Email</div>
 							<input
 								className="login-input"
-								//onChange={}
+								type="email"
+								value={email}
+								onChange={e => setEmail(e.currentTarget.value)}
 							/>
 							<div>Password</div>
 							<input
 								className="login-input"
-								//onChange={}
+								type="password"
+								value={password}
+								onChange={e =>
+									setPassword(e.currentTarget.value)
+								}
 							/>
 							<div className="error">{error}</div>
 						</div>
@@ -51,10 +81,7 @@ function Signup(props) {
 						<br style={{ size: "10px" }} />
 
 						<div className="signup-buttons">
-							<button
-								className="login-button"
-								onClick={signupButton}
-							>
+							<button className="login-button" onClick={signup}>
 								Sign Up
 							</button>
 						</div>

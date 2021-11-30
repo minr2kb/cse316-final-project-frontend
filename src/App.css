@@ -82,18 +82,6 @@ button:hover {
 	font-size: medium;
 }
 
-.number-response-input {
-	width: 8rem;
-	border-radius: 5px;
-	padding: 5px;
-}
-
-.text-response-input {
-	width: calc(100% - 14px);
-	border-radius: 5px;
-	padding: 5px;
-}
-
 /* @media screen and (max-width: 600px) {
 	.main {
 		width: 100%;

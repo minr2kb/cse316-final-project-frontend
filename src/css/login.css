@@ -24,9 +24,10 @@
 .loginInputs {
 	width: 100%;
 }
+
 .login-input {
-	width: calc(100% - 8px);
-	padding: 3px;
+	width: calc(100% - 12px);
+	padding: 5px;
 	margin-bottom: 10px;
 }
 

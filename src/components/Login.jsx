@@ -1,14 +1,26 @@
 import "../css/login.css";
+import { loginAPI } from "../api/client";
+import { useState } from "react";
+
 function Login(props) {
-	const { currentPage, setCurrentPage, error } = props;
+	const { currentPage, setCurrentPage } = props;
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
 
-	const signupButton = () => {
-		setCurrentPage("signup");
-	};
-
-	const loginButton = () => {
+	const login = () => {
 		//temporary: to be changed
-		setCurrentPage("logday");
+		let mail_format = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+		if (!mail_format.test(email)) {
+			setError("Email is invalid");
+		} else {
+			if (password.length < 1) {
+				setError("Password is empty");
+			} else {
+				setError("");
+				loginAPI(email, password).then(res => window.alert(res));
+			}
+		}
 	};
 
 	return (
@@ -22,24 +34,28 @@ function Login(props) {
 					<div className="loginInputs">
 						<div>Email</div>
 						<input
+							type="email"
 							className="login-input"
-							//onChange={}
+							value={email}
+							onChange={e => setEmail(e.currentTarget.value)}
 						/>
 						<div>Password</div>
 						<input
 							className="login-input"
-							//onChange={}
+							type="password"
+							value={password}
+							onChange={e => setPassword(e.currentTarget.value)}
 						/>
 						<div className="error">{error}</div>
 					</div>
 					<div className="loginButtons">
-						<button className="login-button" onClick={loginButton}>
+						<button className="login-button" onClick={login}>
 							Log In
 						</button>
 						<hr style={{ width: "inherit" }} />
 						<button
 							className="creatnewaccountButton"
-							onClick={signupButton}
+							onClick={() => setCurrentPage("signup")}
 						>
 							Create New Account
 						</button>
