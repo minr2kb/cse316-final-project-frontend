@@ -5,8 +5,8 @@ const SERVER_URL = "https://stark-everglades-14139.herokuapp.com";
 const defaultHeaders = {
 	headers: {
 		"Content-Type": "application/json",
-		withCredentials: true,
-		// crossDomain: true,
+		credentials: "include",
+		crossDomain: true,
 	},
 };
 
