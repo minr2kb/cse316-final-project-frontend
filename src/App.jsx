@@ -76,7 +76,11 @@ function App() {
 						/>
 					)}
 					{currentPage === "edit" && <Edit />}
-					{currentPage === "view" && <View />}
+					{currentPage === "view" && (
+						<View 
+							currentPage={currentPage}
+						/>
+					)}
 					{currentPage === "login" && (
 						<Login 
 							currentPage={currentPage}

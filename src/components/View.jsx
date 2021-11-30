@@ -16,7 +16,7 @@ import {
 import "../css/view.css";
 import { useEffect, useState, useCallback } from "react";
 
-function View() {
+function View(props) {
 	const [questions, setQuestions] = useState([]);
 	const getQuestions = async () => {
 		// This part is dummy data. I'll change to http fetch function later.
@@ -61,9 +61,31 @@ function View() {
 				createdDate: new Date(),
 				responses: { "11/27/2021":0},
 			},
+			{
+				_id: 0,
+				creator: "",
+				createdDate: "",
+				questionType: "text",
+				questionText: "What is your major?",
+				multipleChoice: [],
+				createdDate: new Date(),
+				responses: { "11/30/2021": "Major: Ams & Minor: CSE" },
+			},
+			{
+				_id: 0,
+				creator: "",
+				createdDate: "",
+				questionType: "text",
+				questionText: "Korean food you like?",
+				multipleChoice: [],
+				createdDate: new Date(),
+				responses: { "11/29/2021": "Kimchi" },
+			}
 		];
 		setQuestions(newQuestions);
 	};
+
+	//temporary objects to catagorize questions
 
 	const dataForMultiple = [
 		{
@@ -85,6 +107,9 @@ function View() {
 			response: [0,2],
 			response2:2,
 		},
+	];
+	const dataForText = [
+		
 	];
 
 	const COLORS = ['#0088FE', '#FF8042'];
@@ -122,7 +147,7 @@ function View() {
 				if(!dataForMultiple.includes(newQ)){
 					dataForMultiple.push(newQ);
 				};
-				console.log(dataForMultiple);
+				// console.log(dataForMultiple);
 			}
 			if (q.questionType === "bool" && !dataForBool.includes(q)) {
 				dataForBool.push(q);
@@ -130,17 +155,31 @@ function View() {
 			if (q.questionType === "number" && !dataForNumber.includes(q)) {
 				dataForNumber.push(q);
 			}
+			if (q.questionType === "text" && !dataForText.includes(q)) {
+				dataForText.push(q);
+				dataForText.sort((a,b)=>{return a.createdDate-b.createdDate});
+				console.log(dataForText);
+			}
 		});
-	}, [questions]);
+	}, [questions, props.currentPage]);
 
 	return (
 		<div className="viewData">
 
 			<div className="textData">
-				<div>What is your name?</div>
-				<br/>
-				<div className="dateBlock">11/12/2021</div>
-				<div className="responseBlock">Kyungbae Min</div>
+				{dataForText.map((q)=>(
+					<><div>{q.questionText}</div>
+					<br />
+					{Object.keys(q.responses).map((d)=>(
+						<>
+						<div className="dateBlock">{d}</div>
+						<div className="responseBlock">{q.responses[d]}</div>
+						<br />
+						</>
+					))}
+					<br />
+					</> 
+				))}
 			</div>
 
 			<div className="bar">

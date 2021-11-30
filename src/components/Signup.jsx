@@ -1,4 +1,3 @@
-import "../css/signup.css";
 import "../css/login.css";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
