@@ -5,9 +5,9 @@ const SERVER_URL = "https://stark-everglades-14139.herokuapp.com";
 const defaultHeaders = {
 	headers: {
 		"Content-Type": "application/json",
-		credentials: "include",
-		crossDomain: true,
 	},
+	credentials: "include",
+	// crossDomain: true,
 };
 
 export const uploadImageToCloudinaryAPI = formData => {
